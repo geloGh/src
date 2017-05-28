@@ -20,11 +20,12 @@ namespace MvcMovie.Services
 
         public void Remove(Movie movie)
         {
-            
+
             if (movie != null)
-            
-            _db.Movies.Remove(movie);
-            _db.SaveChanges();
+            {
+                _db.Movies.Remove(movie);
+                _db.SaveChanges();
+            }
         }
 
         public List<string> LoadGenres()
@@ -42,7 +43,7 @@ namespace MvcMovie.Services
         public void Create(Movie movie)
         {
             if (movie == null)
-                throw  new ArgumentNullException(nameof(movie));
+                throw new ArgumentNullException(nameof(movie));
 
             _db.Movies.Add(movie);
             _db.SaveChanges();
@@ -55,7 +56,7 @@ namespace MvcMovie.Services
             Movie movie = _db.Movies.FirstOrDefault(m => m.ID == movieModel.ID);
             if (movie == null)
             {
-                throw  new ArgumentNullException($"Inable to find Movie with ID {movieModel.ID}");
+                throw new ArgumentNullException($"Inable to find Movie with ID {movieModel.ID}");
                 //return HttpNotFound($"Inable to find Movie with ID {movieModel.ID}");
             }
 
@@ -80,7 +81,7 @@ namespace MvcMovie.Services
 
         public IList<Movie> Find(string movieGenre, string searchString)
         {
-           
+
             var movies = from m in _db.Movies
                          select m;
 

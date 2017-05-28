@@ -33,7 +33,7 @@ namespace MvcMovie.App_Start
             #endregion
 
             builder.RegisterType<MovieEFRepository>().As<IMovieRepository>().SingleInstance();
-            //TODO: Create REpository
+            
             //builder.RegisterType<MovienHibernateRepository>().As<IMovieRepository>().SingleInstance();
 
 

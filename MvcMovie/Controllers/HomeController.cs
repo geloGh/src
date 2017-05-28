@@ -15,7 +15,7 @@ namespace MvcMovie.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Pure MVC 5 Movie Card Application with CRUD functionality";
+            ViewBag.Message = "Movie Cards application with CRUD functionality";
 
             return View();
         }

@@ -8,7 +8,7 @@ namespace MvcMovie.Models
      
 
         [StringLength(50, MinimumLength = 3)]
-        public string CategoryName { get; set; }
+        public virtual string CategoryName { get; set; }
 
         public virtual ICollection<Movie> Movies { get; set; }
 
