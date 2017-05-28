@@ -1,0 +1,78 @@
+﻿@model MvcMovie.Models.Movie
+
+@{
+    ViewBag.Title = string.Format("{0} - Details", Model.Title);
+}
+
+<h3>@string.Format("{0} - Details", Model.Title)</h3>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        @*Markup omitted for clarity.*@
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieCategories)
+        </dt>
+
+
+        @foreach (var category in Model.MovieCategories)
+        {
+            <dd>@category.CategoryName</dd>
+        }
+
+    </dl>
+</div>
+<p>
+    <button class="btn btn-primary" onclick="self.close()">Close</button>
+</p>

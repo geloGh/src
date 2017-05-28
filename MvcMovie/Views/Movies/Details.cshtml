@@ -1,0 +1,109 @@
+﻿@model MvcMovie.Models.Movie
+
+@{
+    ViewBag.Title = string.Format("{0} - Details", Model.Title);
+}
+
+<h3>@string.Format("{0} - Details", Model.Title)</h3>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        @*Markup omitted for clarity.*@
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MovieCategories)
+        </dt>
+
+
+        @foreach (var category in Model.MovieCategories)
+        {
+            <dd>@category.CategoryName</dd>
+        }
+
+    </dl>
+
+
+</div>
+@*<p>
+    <button  class="btn btn-default" id ="newWindow">Open in a new window ()</button>
+</p>*@
+<p>
+    @Html.ActionLink("Open in New Window", "DetailsPop", new { id = Model.ID },
+    new
+    {
+        @class = "btn btn-default",
+        target = "_blank",
+        left = 100,
+        top = 100,
+        width = 400,
+        height = 300,
+        toolbar = 1,
+        resizable = 0
+    })
+</p>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<script type="text/javascript">
+    jQuery(function() {
+        //jQuery('#newWindow')
+    });
+
+    @*jQuery(document).ready(function () {
+        alert("Hi");
+        $('#newWindow').on('click', function () {            
+            window.open('/Movies/Details/@Model.ID', '_blank', 'left=100,top=100,width=400,height=300,toolbar=1,resizable=0');
+        });
+    });*@
+</script>
