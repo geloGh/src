@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Autofac.Extras.DynamicProxy;
+using MvcMovie.App_Start;
 using MvcMovie.Contract.Services;
 using MvcMovie.Helpers;
 using MvcMovie.Models;
@@ -10,6 +12,7 @@ using NHibernate.Linq;
 
 namespace MvcMovie.Services
 {
+    [Intercept(typeof(Log4NetInterceptor))]
     public class MovienHibernateRepository : IMovieRepository
     {
         public void Remove(Movie movie)

@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using Autofac;
+using Autofac.Extras.DynamicProxy;
 using Autofac.Integration.Mvc;
 using MvcMovie.Contract.Services;
 using MvcMovie.Services;
@@ -20,7 +21,7 @@ namespace MvcMovie.App_Start
             var builder = new ContainerBuilder();
             #endregion
 
-            #region Setup a common pattern
+            #region Common pattern
             // placed here before RegisterControllers as last one wins
             builder.RegisterAssemblyTypes()
                    .Where(t => t.Name.EndsWith("Repository"))
@@ -32,10 +33,20 @@ namespace MvcMovie.App_Start
                    .InstancePerHttpRequest();
             #endregion
 
-            builder.RegisterType<MovieEFRepository>().As<IMovieRepository>().SingleInstance();
-            
-            //builder.RegisterType<MovienHibernateRepository>().As<IMovieRepository>().SingleInstance();
+            #region Explicit bindings 
 
+            builder.RegisterType<MovieEFRepository>().As<IMovieRepository>()
+                .EnableInterfaceInterceptors()
+                 .InterceptedBy(typeof(Log4NetInterceptor))
+                .SingleInstance();
+
+            //builder.RegisterType<MovienHibernateRepository>().As<IMovieRepository>()
+            //    .EnableInterfaceInterceptors()
+            //    .SingleInstance();
+
+            builder.Register(l => new Log4NetInterceptor());
+
+            #endregion
 
             #region Register all controllers for the assembly
             // Note that ASP.NET MVC requests controllers by their concrete types, 
@@ -53,10 +64,7 @@ namespace MvcMovie.App_Start
             builder.RegisterAssemblyModules(typeof(MvcApplication).Assembly);
             #endregion
 
-            #region Model binder providers - excluded - not sure if need
-            //builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
-            //builder.RegisterModelBinderProvider();
-            #endregion
+            
 
             #region Inject HTTP Abstractions
             /*
@@ -81,8 +89,13 @@ namespace MvcMovie.App_Start
             #endregion
 
             #region Set the MVC dependency resolver to use Autofac
+
             var container = builder.Build();
+
+            var willBeIntercepted = container.Resolve<IMovieRepository>();
+
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            
             #endregion
 
         }

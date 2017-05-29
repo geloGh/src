@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Autofac.Extras.DynamicProxy;
 using Microsoft.Owin.Security;
+using MvcMovie.App_Start;
 using MvcMovie.Contract.Services;
 using MvcMovie.Helpers;
 using MvcMovie.Models;
 
 namespace MvcMovie.Services
 {
+    
     public class MovieEFRepository : IMovieRepository
     {
         private readonly MovieDBContext _db;

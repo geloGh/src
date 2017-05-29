@@ -13,10 +13,10 @@ namespace MvcMovie.Models
         public virtual ICollection<Movie> Movies { get; set; }
 
 
-        public Category()
-        {
-            this.Movies = new HashSet<Movie>();
-        }
+        //public Category()
+        //{
+        //    this.Movies = new HashSet<Movie>();
+        //}
 
         public override string ToString()
         {

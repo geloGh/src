@@ -1,0 +1,4 @@
+DEBUG 2017-05-29 04:29:13,038  1045ms [42] MovieEFRepository      Intercept          - MovieEFRepository.LoadGenres();
+DEBUG 2017-05-29 04:29:15,353  3360ms [42] MovieEFRepository      Intercept          - Method MovieEFRepository.LoadGenres returned <System.Collections.Generic.List`1[System.String]>
+DEBUG 2017-05-29 04:29:15,358  3365ms [42] MovieEFRepository      Intercept          - MovieEFRepository.Find(<movieGenre>:<>,<searchString>:<>);
+DEBUG 2017-05-29 04:29:15,477  3485ms [42] MovieEFRepository      Intercept          - Method MovieEFRepository.Find returned <System.Collections.Generic.List`1[MvcMovie.Models.Movie]>
