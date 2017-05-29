@@ -128,3 +128,4 @@ C:\Users\OC036875\Documents\Visual Studio 2015\Projects\Getting started with MVC
 C:\Users\OC036875\Documents\Visual Studio 2015\Projects\Getting started with MVC5\src\MvcMovie\bin\FluentNHibernate.xml
 C:\Users\OC036875\Documents\Visual Studio 2015\Projects\Getting started with MVC5\src\MvcMovie\bin\Iesi.Collections.xml
 C:\Users\OC036875\Documents\Visual Studio 2015\Projects\Getting started with MVC5\src\MvcMovie\bin\NHibernate.xml
+C:\Users\OC036875\Documents\Visual Studio 2015\Projects\Getting started with MVC5\src\MvcMovie\obj\Debug\MvcMovie.csprojResolveAssemblyReference.cache
